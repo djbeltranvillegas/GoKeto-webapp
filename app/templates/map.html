@@ -1,10 +1,6 @@
 <!-- This template built from the standard bootstrap template downloaded from
 https://getbootstrap.com/docs/3.3/getting-started/#examples
  It contains the standard bootstrap interface objects as well as basic examples of common web app formats
-
- The easiest way to use this is to copy it over to a new .html file, then remove/add the parts you want.
-
- June 2, 2019, Donald Lee-Brown
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -41,12 +37,12 @@ https://getbootstrap.com/docs/3.3/getting-started/#examples
 	       * element that contains the map. */
 	      #map {
 	        height: 470px;
-			width: 62%;
+			width: 100%;
 	      }
 	      /* Optional: Makes the sample page fill the window. */
 	      html, body {
 	        height: 100%;
-			width: 62%;
+			width: 100%;
 	        margin-top: 30px;
 	        padding: 0;
 	      }
@@ -111,9 +107,10 @@ https://getbootstrap.com/docs/3.3/getting-started/#examples
       <!--<div class="page-header">
         <h1>Map!</h1>
       </div>  -->
-	  <div class="row">
+	  <!--<div class="row">-->
 		  
-	  <div id="map" class="col-sm-8"></div>
+	  <div id="map"></div>
+	  <!--<div id="map" class="col-sm-8"></div>-->
 
 		  <script>
 
@@ -242,23 +239,49 @@ https://getbootstrap.com/docs/3.3/getting-started/#examples
 	      async defer></script>
 
 	  
-		  <div class="col-sm-4"> 
+		  <!--<div class="col-sm-4">--> 
+		  <p></p>
 		  
-          <div class="panel panel-default">
+          <!--<div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Menu Items</h3>
             </div>
-            <div class="panel-body">
-              {% for dish in dish_list %}
-			  <p> {{ loop.index }}. {{ dish[3] }}. At {{ dish[2] }}. Kscore {{ dish[5] }}. {{ dish[4] }} miles away. </p>
-			  {% endfor %}
-            </div>
-          </div>
+            <div class="panel-body">-->
+				
+			
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Dish Name</th>
+                  <th>Restaurant</th>
+                  <th>Kscore: click on number for explanation</th>
+				  <th>Distance, miles</th>
+                </tr>
+              </thead>
+              <tbody>
+	              {% for dish in dish_list %}
+				  <tr>
+				  <td>{{ loop.index }}</td> 
+			  	  <td>{{ dish[3] }}</td>
+				  <td>{{ dish[2] }}</td>
+				  <td><a href="/kscore?menitem={{ dish[3] }}">{{ dish[5] }}</a></td>
+				  <td>{{ dish[4] }}</td>
+				  </tr>
+				  {% endfor %}
+                
+              </tbody>
+            </table>
+			
+			
+              
+           <!-- </div>
+          </div> -->
 		  
 		  
-		  </div>
+		  <!--</div>-->
 	
-    </div>
+    <!--</div>-->
 
 
 
